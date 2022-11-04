@@ -24,22 +24,23 @@ display = Display(displayWidth=128, displayHeight=32, i2cBuss=i2c)
 display.TurnOnTemporarily(TURN_OFF_DISPALY_DELAY)
 displayActivationButton = Button(16, Button.Trigger.ON_CLICK, lambda s: display.TurnOnTemporarily(TURN_OFF_DISPALY_DELAY))
 clock = Clock(i2c, 0x68)
-clock.setTime(year=2022,month=1,day=17,hour=18,minute=59, second=40)
+clock.setTime(year=2022,month=1,day=17,hour=18,minute=59, second=55)
 
 # Plant #1
 plant1_SoilMoistureSensor = SoilMoistureSensor(pinNumber=26, minReadableValue=58500, maxReadableValue=25000)
-plant1_WaterPump = WaterPump(pinNumber=15)
-plant1 = Plant(name="NuMex Chilli", soilMoistureThresholds=(20, 60), wateringDuration=6, soilMoistureSensor=plant1_SoilMoistureSensor, waterPump=plant1_WaterPump, clock=clock)
-# plant1.MinDelayBetweenWaterings = 8 # Just for safety
+plant1_WaterPump = WaterPump(pinNumber=12)
+plant1 = Plant(name="Plant 1", soilMoistureThresholds=(20, 60), wateringDuration_InSec=6, soilMoistureSensor=plant1_SoilMoistureSensor, waterPump=plant1_WaterPump, clock=clock)
+plant1.MinDelayBetweenWaterings_InSec = 2 * 60 # Just for safety
 
 # GrowBox #1
 growLights = GrowLights(13)
-growBox1 = GrowBox(name="Main", dayCycle=(10, 20), growLights=growLights, clock=clock)
+growLights.TurnOff()
+growBox1 = GrowBox(name="Main", dayCycle=(19, 20), growLights=growLights, clock=clock)
 growBox1.AddPlant(plant1)
 
 
 
-time.sleep(5)
+# time.sleep(5)
 # GrowBox Checking Loop
 growBoxCheckingTimer = Timer()
 def CheckGrowBoxes(self):
