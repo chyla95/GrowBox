@@ -3,7 +3,7 @@ from machine import Pin
 class DigitalPin(Pin):
     
     # Constructors
-    def __init__(self, pinNumber:int, pinMode:int, pinPullMode:int = None):
+    def __init__(self, pinNumber:int, pinMode:int, pinPullMode:int | None = None):
         self._pinNumber = pinNumber
         self._pinMode = pinMode
         self._pinPullMode = pinPullMode
@@ -32,7 +32,7 @@ class DigitalPin(Pin):
         return self._pinPullMode
 
     # Methods
-    def ReadState(self) -> int:
+    def ReadState(self) -> int | None:
         return self.value() # as self.State
 
     def SetState(self, state:int) -> None:
