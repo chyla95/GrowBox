@@ -48,9 +48,6 @@ class Adjustable:
     def SetWidthOverTime(self, value, duration) -> None:   
         if(self.CurentState == Adjustable.State.BUSY):
             raise RuntimeError('The "Adjustable" component is Busy...')
-            # print('The component is Busy...')
-            # return
-        print("called")
         self._state = Adjustable.State.BUSY
         duration = duration * 1000
         minValue = PwmPin.State.LOW_STATE
