@@ -1,6 +1,6 @@
 # GrowBox (Raspberry Pi Pico - OOP)
 
-A project based on an embedded _Raspberry Pi Pico_ system, that automatically manages your growbox.
+A project build uppon _Raspberry Pi Pico_ embedded system, that automatically manages your growbox.
 
 Functions:
 
